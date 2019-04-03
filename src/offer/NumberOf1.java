@@ -20,7 +20,7 @@ public class NumberOf1 {
             fg=fg<<1;
         }
         return cnt;
-        /*
+        /*把一个整数减去1，再和原整数与，会最右边一个1变成0.那么有多少个1就可以与多少次
         * int count = 0;
         while (n != 0) {
             ++count;
@@ -28,20 +28,5 @@ public class NumberOf1 {
         }
         return count;
         * */
-
-        /*运行时间过大？
-        wrong answer
-        int cnt=0;
-        if(n==0) return cnt;
-        if(n<0){
-            cnt++;
-            n=-n;
-        }
-        while(n!=1){
-            if(n%2==1) cnt++;
-            n=n/2;
-        }
-        cnt++;
-        return cnt;*/
     }
 }
