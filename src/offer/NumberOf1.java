@@ -20,6 +20,15 @@ public class NumberOf1 {
             fg=fg<<1;
         }
         return cnt;
+        /*
+        * int count = 0;
+        while (n != 0) {
+            ++count;
+            n = (n - 1) & n;
+        }
+        return count;
+        * */
+
         /*运行时间过大？
         wrong answer
         int cnt=0;
