@@ -1,7 +1,8 @@
 package poj;
 import java.util.Scanner;
 /**
- *Description:为走廊建长度200的数组，每次移动桌子经过的走廊+10，找出数组元素最大值输出
+ *Description:为走廊建长度200的数组，每次移动桌子经过的走廊+10，
+ * 找出数组元素最大值输出
  *author:csn
  * */
 
