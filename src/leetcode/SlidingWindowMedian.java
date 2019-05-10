@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class SlidingWindowMedian {
     /*480. Sliding Window Median
@@ -56,5 +53,36 @@ public class SlidingWindowMedian {
         if(idx < 0 )
             idx = - idx - 1;
         windows.add(idx,newElem);
+    }
+
+    //Solution: 最大堆和最小堆
+    public double[] medianSlidingWindowII(int[] nums, int k) {
+        MedianQueue window = new MedianQueue();
+        double[] median = new double[nums.length - k + 1];
+        for (int i = 0; i < nums.length; i++) {
+            window.add(nums[i]);
+            if (i >= k) window.remove(nums[i - k]);
+            if (i >= k - 1) median[i - k + 1] = window.median();
+        }
+        return median;
+    }
+
+    static class MedianQueue {
+        Queue<Long> maxHeap = new PriorityQueue<>(Collections.reverseOrder()), minHeap = new PriorityQueue<>();
+
+        private void add(long n) {
+            maxHeap.add(n);
+            minHeap.add(maxHeap.poll());
+        }
+
+        private double median() {
+            while (maxHeap.size() - minHeap.size() >= 2) minHeap.offer(maxHeap.poll());
+            while (minHeap.size() - maxHeap.size() >= 1) maxHeap.offer(minHeap.poll());
+            return maxHeap.size() == minHeap.size() ? (maxHeap.peek() + minHeap.peek()) / 2.0 : maxHeap.peek();
+        }
+
+        private boolean remove(long n) {
+            return maxHeap.remove(n) || minHeap.remove(n);
+        }
     }
 }
