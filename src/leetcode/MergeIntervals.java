@@ -11,7 +11,7 @@ import java.util.Comparator;
  */
 public class MergeIntervals {
     public int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, (a, b) -> a[0]-b[0]);
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
         int id = 0;
         for(int[] interval : intervals) {
             if(id == 0 || intervals[id-1][1] < interval[0]) {
