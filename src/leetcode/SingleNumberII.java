@@ -41,6 +41,8 @@ public class SingleNumberII {
         return i;
     }
 
+    //bit manipulation I
+    // 对每个数的32位都进行一下统计，统计所有数的每一位中1出现的次数，累加然后%3，然后送回原来对应的位。
     public int singleNumber3(int[] nums) {
         int res = 0;
         for(int i = 0; i < 32; i++){
@@ -54,6 +56,7 @@ public class SingleNumberII {
         return res;
     }
 
+    //bit manipulation II
     public int singleNumber4(int[] nums) {
         int one = 0, two = 0, three = 0;
         for(int num : nums){
