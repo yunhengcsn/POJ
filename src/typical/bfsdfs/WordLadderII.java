@@ -43,7 +43,9 @@ public class WordLadderII {
         ArrayList<String> solution = new ArrayList<>();
 
         dict.add(start);
+        // use bfs to find neighbors and shortest distance
         bfs(start, end, dict, nodeNeighbors, distance);
+        // use dfs to update paths
         dfs(start, end, dict, nodeNeighbors, distance, solution, res);
         return res;
     }
@@ -97,7 +99,6 @@ public class WordLadderII {
                 }
                 chs[i] = old_ch;
             }
-
         }
         return res;
     }
@@ -118,7 +119,8 @@ public class WordLadderII {
     }
 
     /*
-          2.Basic idea is using a HashMap to record all route ending at the key and checked whether the key equals EndWord.
+          2. bfs
+            Basic idea is using a HashMap to record all route ending at the key and checked whether the key equals EndWord.
             Do remember to remove the checked words from dictionary.
      */
     public List<List<String>> findLadders2(String beginWord, String endWord, List<String> wordList) {
